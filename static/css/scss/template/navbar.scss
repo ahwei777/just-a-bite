@@ -1,0 +1,82 @@
+/*  導覽列  */
+.navbar {
+  display: block;
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+  background-color: white;
+}
+.navbar .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+.navbar__site-name {
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  font-family: Questrial;
+  font-size: 36px;
+  text-align: center;
+  color: #489846;
+}
+.navbar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  border-radius: 8px;
+}
+.navbar__list li {
+  margin-left: 11px;
+  border-radius: 8px;
+  transition: all 0.5s;
+}
+.navbar__list li a {
+  font-family: MicrosoftJhengHei;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  top: 0;
+  display: block;
+  text-align: justify;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  color: #010101;
+  padding: 12px 24px;
+}
+.navbar__list li.active,
+.navbar__list li:hover {
+  background-color: #ff7286;
+  color: #fefefe;
+}
+.navbar__list li.active a,
+.navbar__list li:hover a {
+  color: #fefefe;
+}
+
+/*  RWD  */
+@media (max-width: 768px) {
+  /*  導覽列  */
+  .navbar .wrapper {
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .navbar__site-name {
+    margin: 20px;
+  }
+  .navbar__list {
+    display: flex;
+    width: 100%;
+  }
+  .navbar__list li {
+    flex: 1;
+    margin-left: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+}

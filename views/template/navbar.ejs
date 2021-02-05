@@ -1,0 +1,20 @@
+<nav class='navbar'>
+  <div class='wrapper'>
+    <div class='navbar__site-name' style="cursor:pointer;" onclick="location.href='/index';">Just A Bite!</div>
+    <div>
+      <ul class='navbar__list'>
+        <li class='<%= getActiveFromURL(url, "/lottery") %>'><a href="/lottery">抽個大獎</a></li>
+        <li class='<%= getActiveFromURL(url, "/order") %>'><a href="/order">我要點餐</a></li>
+        <li><a href="#">查詢訂單</a></li>
+        <li class='<%= getActiveFromURL(url, "/faq") %>'><a href="/faq">常見問題</a></li>
+        <% if(username) { %>
+          <li class='<%= getActiveFromURL(url, "/admin") %>'><a href="/admin">後台管理</a></li>
+          <li><a href ="/logout">後台登出</a></li>
+        <% } else { %>
+          <li class='<%= getActiveFromURL(url, "/register") %>'><a href="/register">後台註冊</a></li>
+          <li class='<%= getActiveFromURL(url, "/login") %>'><a href="/login">後台登入</a></li>
+        <% } %> 
+      </ul>
+    </div>
+  </div>
+</nav>

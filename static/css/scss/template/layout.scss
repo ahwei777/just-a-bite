@@ -1,0 +1,15 @@
+/*  debug用
+.debug *, .debug {
+  outline: gold 3px solid;
+}
+*/
+/*  通用 wrapper ，設定 margin & padding 及限制最大寬度  */
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+/*  隱藏用屬性  */
+.hide {
+  display: none;
+}

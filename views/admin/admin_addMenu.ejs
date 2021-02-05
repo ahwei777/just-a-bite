@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('../template/head') %>
+</head>
+ <body>
+  <!--導覽列-->
+  <%- include('../template/navbar') %>
+  <!-- 直接根據 res.locals 內的 errorMessage 取得錯誤訊息 -->
+  <% if (errorMessage.length > 0) { %> <!-- errorMessage 預設值為空陣列 --> 
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+  <!--管理選項 nav-->
+  <%- include('./admin_nav') %>
+  <section class="section">
+    <!-- 新增按鈕 -->
+    <form class="needs-validation" method="POST" action="/addMenu" enctype ="multipart/form-data" novalidate>
+      <div class="form-row">
+        <div class="col-md-5 mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-lg">名稱：</span>
+            </div>
+            <input type="text" class="form-control" name="name" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-5 mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-lg">價格：</span>
+            </div>
+            <input type="text" class="form-control" name="price" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-5 mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-lg">順序：</span>
+            </div>
+            <input type="text" class="form-control" name="sequence" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-5 mb-3">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">上傳圖片</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" name="file" class="custom-file-input form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
+              <label class="custom-file-label" for="inputGroupFile01">選擇圖片(限 .png 格式)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <center><button class="btn btn-primary btn-lg" type="submit">送出</button></center>
+    </form>
+
+  </section>
+  <!--底部資訊-->
+  <%- include('../template/footer') %>
+  <!-- 引入 JS，負責 client 端互動，檢查輸入以及發送 request 到 API -->
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    // 偵測上傳檔案後顯示上傳檔案名稱
+    $('.custom-file-input').on('change', function() { 
+      let fileName = $(this).val().split('\\').pop(); 
+      $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+    });
+  </script>
+</body>
+</html>

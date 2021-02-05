@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('template/head') %>
+</head>
+ <body>
+  <!--導覽列-->
+  <%- include('template/navbar') %>
+  <!-- 直接根據 res.locals 內的 errorMessage 取得錯誤訊息 -->
+  <% if (errorMessage.length > 0) { %> <!-- errorMessage 預設值為空陣列 --> 
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+
+  <div class="wrapper">
+    <section class="section">
+      <h2 class="section__title">FAQ - 常見問題</h2>
+      <div class="faq-block">
+        <!-- 防空值報錯 -->
+        <% if (typeof faqs !== 'undefined') {%> 
+          <% for (let faq of faqs) { %>
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="heading<%= faq.sequence %>">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= faq.sequence %>" aria-controls="collapseOne">
+                    <span class="faq-item__number">Q<%= faq.sequence %>: </span><span class="faq-item__content"><%= faq.name %></span>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapse<%= faq.sequence %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <%= faq.content %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %> 
+        <% } %> 
+        </div>
+      
+    </section>
+  </div>
+
+  <!--底部資訊-->
+  <%- include('template/footer') %>
+
+<script src ='./faq.js'></script>
+</body>
+</html>

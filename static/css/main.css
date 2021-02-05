@@ -1,0 +1,965 @@
+@charset "UTF-8";
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+/*  debug用
+.debug *, .debug {
+  outline: gold 3px solid;
+}
+*/
+/*  通用 wrapper ，設定 margin & padding 及限制最大寬度  */
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/*  隱藏用屬性  */
+.hide {
+  display: none;
+}
+
+/*  導覽列  */
+.navbar {
+  display: block;
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+  background-color: white;
+}
+
+.navbar .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.navbar__site-name {
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  font-family: Questrial;
+  font-size: 36px;
+  text-align: center;
+  color: #489846;
+}
+
+.navbar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  border-radius: 8px;
+}
+
+.navbar__list li {
+  margin-left: 11px;
+  border-radius: 8px;
+  transition: all 0.5s;
+}
+
+.navbar__list li a {
+  font-family: MicrosoftJhengHei;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  top: 0;
+  display: block;
+  text-align: justify;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  color: #010101;
+  padding: 12px 24px;
+}
+
+.navbar__list li.active,
+.navbar__list li:hover {
+  background-color: #ff7286;
+  color: #fefefe;
+}
+
+.navbar__list li.active a,
+.navbar__list li:hover a {
+  color: #fefefe;
+}
+
+/*  RWD  */
+@media (max-width: 768px) {
+  /*  導覽列  */
+  .navbar .wrapper {
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .navbar__site-name {
+    margin: 20px;
+  }
+
+  .navbar__list {
+    display: flex;
+    width: 100%;
+  }
+
+  .navbar__list li {
+    flex: 1;
+    margin-left: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+}
+/*  尾端資訊列  */
+.footer__top {
+  background-color: #e8efee;
+  padding: 40px;
+  color: #484848;
+}
+
+.footer__top .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__info {
+  margin-right: 16px;
+}
+
+.footer__info div + div {
+  margin-top: 16px;
+}
+
+.footer__site {
+  font-family: Questrial;
+  font-size: 36px;
+  color: #489846;
+}
+
+.footer__bottom {
+  font-size: 16px;
+  background-color: #35564b;
+  padding: 15px;
+  text-align: center;
+  color: white;
+}
+
+/*  RWD  */
+@media (max-width: 768px) {
+  /*  底部資訊  */
+  .footer__top .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .footer__info {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+}
+/*  橫幅大圖  */
+.banner__index {
+  position: relative;
+  height: 450px;
+  background: url(/img/index/index_bg.jpg) center/cover no-repeat;
+}
+.banner__index:after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.banner__index h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  line-height: 450px;
+  color: white;
+  text-align: center;
+  font-family: MicrosoftJhengHei;
+  font-size: 60px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/*  通用 section 區塊  */
+.section {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.section__title {
+  display: inline-block;
+  font-family: MicrosoftJhengHei;
+  font-size: 36px;
+  font-weight: bold;
+  border-left: solid 15px #a3dea2;
+  padding-left: 17px;
+  margin-bottom: 36px;
+}
+
+/*  官網簡介  */
+.section__desc {
+  font-size: 16px;
+  font-family: MicrosoftJhengHei;
+  line-height: 2em;
+  margin: 0 0 84px 0;
+}
+
+/*  功能按鈕  */
+.section__buttons a {
+  display: inline-block;
+  padding: 60px 80px;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 0.32px;
+  color: #3e613d;
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-bottom: 40px;
+}
+
+.section__buttons a:hover {
+  transform: scale(1.1);
+}
+
+.btn-order {
+  background-color: #a8e8e1;
+}
+
+.btn-query {
+  margin-left: 23px;
+  background-color: #f9f9b5;
+}
+
+/*  菜單多圖 section  */
+.section__images {
+  display: flex;
+}
+.section__images div {
+  flex: 1;
+}
+.section__images img {
+  display: flex;
+  width: 100%;
+}
+
+/*  評論 section  */
+.section__comments {
+  display: flex;
+  margin-top: 50px;
+}
+
+.section__comments-block + .section__comments-block {
+  margin-left: 16px;
+}
+
+.section__comments-block {
+  position: relative;
+  flex: 1;
+}
+
+.comment-author {
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  transform: translate(-50%, -50%);
+}
+
+.author-name {
+  line-height: 18px;
+}
+
+.comment-content {
+  box-sizing: border-box;
+  height: auto;
+  font-family: MicrosoftJhengHei;
+  font-size: 16px;
+  letter-spacing: 0.14px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: -1.4px -1.4px 4px 0 #d8eaef;
+  border: solid 1px #c7e5ec;
+  padding-top: 93px;
+  padding-bottom: 39px;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+/* 常見問題 */
+.faq-block {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.btn-link {
+  color: black;
+}
+.btn-link:hover, .btn-link:focus {
+  text-decoration: none;
+  color: black;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.card:hover {
+  background-color: lightyellow;
+}
+
+.card-header {
+  background: none;
+  border: none;
+}
+
+.card-body {
+  text-align: left;
+  padding: 10px 90px;
+}
+
+.faq-item__number {
+  font-family: Questrial;
+  font-size: 24px;
+  color: #70b282;
+  margin-right: 16px;
+  line-height: 24px;
+}
+.faq-item__content {
+  font-family: MicrosoftJhengHei;
+  font-weight: normal;
+  font-size: 18px;
+  margin: 0;
+  line-height: 24px;
+}
+
+/*  抽獎  */
+.section__lottery {
+  height: 600px;
+  background: url(/img/lottery/bg.jpg) center/cover no-repeat;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.lottery__block {
+  border-radius: 16px;
+  background-color: white;
+  max-width: 500px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 20px 20px 20px;
+  box-sizing: border-box;
+}
+.lottery__title {
+  font-weight: bold;
+  text-align: center;
+  color: #5ec1b6;
+  font-size: 24px;
+}
+.lottery__detail {
+  display: flex;
+  padding: 20px 0px;
+  border-bottom: #cdcdcd 1px solid;
+}
+.lottery__detail__title {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100px;
+}
+.lottery__detail__cotent {
+  font-size: 16px;
+  flex: 1;
+}
+.lottery__btn {
+  border-radius: 16px;
+  padding: 20px 0;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #e62a45;
+  transition: all 0.3s;
+  margin: 20px auto;
+  text-align: center;
+  box-sizing: border-box;
+  max-width: 400px;
+}
+.lottery__btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.lottery__result {
+  color: #292222;
+  max-width: 800px;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lottery__result__title {
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+.lottery__result__content {
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+.lottery__result__btn {
+  border-radius: 16px;
+  padding: 20px 0;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #e62a45;
+  transition: all 0.3s;
+  margin: 20px auto;
+  box-sizing: border-box;
+  max-width: 300px;
+}
+.lottery__result__btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/*  RWD 設計  */
+@media (max-width: 768px) {
+  /*  抽獎區域  */
+  .section__lottery {
+    background: none;
+    height: auto;
+  }
+
+  .lottery__block {
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    transform: none;
+    max-width: none;
+  }
+
+  /*  抽獎結果  */
+  .lottery__result {
+    top: 0;
+    left: 0;
+    transform: none;
+    padding: 10px 5px;
+  }
+}
+/*  點餐  */
+.banner__order {
+  height: 120px;
+  background: url(../../../img/order/banner.png) center/cover no-repeat;
+}
+
+.section__hotsale {
+  display: flex;
+}
+.section__hotsale div {
+  flex: 1;
+}
+.section__hotsale img {
+  display: flex;
+  width: 100%;
+}
+
+.soldout {
+  position: relative;
+}
+.soldout:before {
+  position: absolute;
+  content: "售完";
+  font-size: 16px;
+  color: white;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #2f2f2f;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  line-height: 60px;
+}
+.soldout:after {
+  position: absolute;
+  content: "";
+  background: white;
+  opacity: 0.5;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.order__intro {
+  display: flex;
+  align-items: center;
+}
+.order__intro__banner img {
+  height: 350px;
+}
+.order__intro__text {
+  text-align: left;
+  margin-left: 20px;
+}
+.order__intro__text h1 {
+  white-space: pre-line;
+  font-weight: bold;
+  color: #357933;
+}
+
+.action__msg {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.fa-angle-double-down {
+  margin-top: 20px;
+  font-size: 36px;
+}
+
+.section__menu {
+  margin: auto;
+  max-width: 800px;
+  /*  設置 flex 可自動收合用於 RWD  */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.menu__card {
+  color: #3f633c;
+  margin: 15px;
+}
+.menu__card__photo img {
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+}
+.menu__card__title {
+  margin: 20px auto;
+}
+.menu__card__btn {
+  border: solid 1px #3f633c;
+  background-color: #f1fff2;
+  padding: 15px auto;
+}
+
+/*  RWD 設計  */
+@media (max-width: 768px) {
+  /*  抽獎區域  */
+  .order__intro {
+    flex-direction: column;
+  }
+
+  .order__intro__banner img {
+    height: auto;
+    width: 60%;
+  }
+}
+/* 管理後台 */
+/*  登入  */
+.form-row {
+  justify-content: center;
+}
+
+/*  後台選項  */
+.admin_nav {
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+/*  管理抽獎  */
+.alert-warning, .alert-danger {
+  text-align: center;
+}
+
+.container {
+  margin: 100px auto;
+}
+
+.admin_lottery_image img {
+  height: 160px;
+  width: 160px;
+}
+
+.table {
+  text-align: center;
+}
+.table th {
+  vertical-align: middle;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/*  刪除符號  */
+.fa-trash-alt {
+  font-size: 30px;
+  padding: 10px;
+}
+
+.fa-trash-alt:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+/*  調整上傳圖片 input 的樣式  */
+.custom-file-label {
+  cursor: pointer;
+}
+.custom-file-label:after {
+  content: none;
+}
+
+/*# sourceMappingURL=main.css.map */

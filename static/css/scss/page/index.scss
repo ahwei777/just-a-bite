@@ -1,0 +1,124 @@
+/*  橫幅大圖  */
+.banner__index {
+  position: relative;
+  height: 450px;
+  background: url(/img/index/index_bg.jpg) center/cover no-repeat;
+
+  &:after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  & h1 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    line-height: 450px;
+    color: white;
+    text-align: center;
+    font-family: MicrosoftJhengHei;
+    font-size: 60px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+}
+
+/*  通用 section 區塊  */
+.section {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+.section__title {
+  display: inline-block;
+  font-family: MicrosoftJhengHei;
+  font-size: 36px;
+  font-weight: bold;
+  border-left: solid 15px #a3dea2;
+  padding-left: 17px;
+  margin-bottom: 36px;
+}
+/*  官網簡介  */
+.section__desc {
+  font-size: 16px;
+  font-family: MicrosoftJhengHei;
+  line-height: 2em;
+  margin: 0 0 84px 0;
+}
+/*  功能按鈕  */
+.section__buttons a {
+  display: inline-block;
+  padding: 60px 80px;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 0.32px;
+  color: #3e613d;
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-bottom: 40px;
+}
+.section__buttons a:hover {
+  transform: scale(1.1);
+}
+.btn-order {
+  background-color: #a8e8e1;
+}
+.btn-query {
+  margin-left: 23px;
+  background-color: #f9f9b5;
+}
+/*  菜單多圖 section  */
+.section__images {
+  display: flex; 
+  
+  & div {
+    flex: 1;
+  }
+
+  & img{
+    display: flex;
+    width: 100%; 
+  }
+}
+/*  評論 section  */
+.section__comments {
+  display: flex;
+  margin-top: 50px;
+}
+.section__comments-block + .section__comments-block {
+  margin-left: 16px;
+}
+.section__comments-block {
+  position: relative;
+  flex: 1;
+}
+.comment-author {
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  transform: translate(-50%, -50%);
+}
+.author-name {
+  line-height: 18px;
+}
+.comment-content {
+  box-sizing: border-box;
+  height: auto;
+  font-family: MicrosoftJhengHei;
+  font-size: 16px;
+  letter-spacing: 0.14px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: -1.4px -1.4px 4px 0 #d8eaef;
+  border: solid 1px #c7e5ec;
+  padding-top: 93px;
+  padding-bottom: 39px;
+  padding-right: 25px;
+  padding-left: 25px;
+}

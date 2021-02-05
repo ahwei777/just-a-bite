@@ -1,0 +1,446 @@
+/*  debug用
+.debug *, .debug {
+  outline: gold 3px solid;
+}
+*/
+/*  通用 wrapper ，設定 margin & padding 及限制最大寬度  */
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+/*  隱藏用屬性  */
+.hide {
+  display: none;
+}
+
+/*  導覽列  */
+.navbar {
+  display: block;
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+  background-color: white;
+}
+.navbar .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+.navbar__site-name {
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  font-family: Questrial;
+  font-size: 36px;
+  text-align: center;
+  color: #489846;
+}
+.navbar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  border-radius: 8px;
+}
+.navbar__list li {
+  margin-left: 11px;
+  border-radius: 8px;
+  transition: all 0.5s;
+}
+.navbar__list li a {
+  font-family: MicrosoftJhengHei;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  top: 0;
+  display: block;
+  text-align: justify;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  color: #010101;
+  padding: 12px 24px;
+}
+.navbar__list li.active,
+.navbar__list li:hover {
+  background-color: #ff7286;
+  color: #fefefe;
+}
+.navbar__list li.active a,
+.navbar__list li:hover a {
+  color: #fefefe;
+}
+
+/*  橫幅大圖  */
+.banner__index {
+  position: relative;
+  height: 450px;
+  background: url(/img/index/index_bg.jpg) center/cover no-repeat
+}
+
+
+.banner__index:after {
+  content: '';
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.banner__index h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  line-height: 450px;
+  color: white;
+  text-align: center;
+  font-family: MicrosoftJhengHei;
+  font-size: 60px;
+  font-weight: bold;
+  color: #ffffff;
+}
+/*  通用 section 區塊  */
+.section {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+h2 {
+  margin: 0;
+}
+.section__title {
+  display: inline-block;
+  font-family: MicrosoftJhengHei;
+  font-size: 36px;
+  font-weight: bold;
+  border-left: solid 15px #a3dea2;
+  padding-left: 17px;
+  margin-bottom: 36px;
+}
+/*  官網簡介  */
+.section__desc {
+  font-size: 16px;
+  font-family: MicrosoftJhengHei;
+  line-height: 2em;
+  margin: 0 0 84px 0;
+}
+/*  功能按鈕  */
+.section__buttons a {
+  display: inline-block;
+  padding: 60px 80px;
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 0.32px;
+  color: #3e613d;
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-bottom: 40px;
+}
+.section__buttons a:hover {
+  transform: scale(1.1);
+}
+.btn-order {
+  background-color: #a8e8e1;
+}
+.btn-query {
+  margin-left: 23px;
+  background-color: #f9f9b5;
+}
+/*  菜單多圖 section  */
+.section__images {
+  display: flex; 
+}
+.section__images div {
+  width: 25%; 
+}
+.section__images img{
+  display: flex;
+  width: 100%; 
+}
+/*  評論 section  */
+.section__comments {
+  display: flex;
+  margin-top: 50px;
+}
+.section__comments-block + .section__comments-block {
+  margin-left: 16px;
+}
+.section__comments-block {
+  position: relative;
+  flex: 1;
+}
+.comment-author {
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  transform: translate(-50%, -50%);
+}
+.author-name {
+  line-height: 18px;
+}
+.comment-content {
+  box-sizing: border-box;
+  height: auto;
+  font-family: MicrosoftJhengHei;
+  font-size: 16px;
+  letter-spacing: 0.14px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: -1.4px -1.4px 4px 0 #d8eaef;
+  border: solid 1px #c7e5ec;
+  padding-top: 93px;
+  padding-bottom: 39px;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+/*  尾端資訊列 section  */
+.footer__top {
+  background-color: #e8efee;
+  padding: 40px;
+  color: #484848;
+}
+.footer__top .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__info {
+  margin-right: 16px;
+}
+.footer__info div + div{
+  margin-top: 16px;
+}
+.footer__site {
+  font-family: Questrial;
+  font-size: 36px;
+  color: #489846;
+}
+.footer__bottom {
+font-size: 16px;
+  background-color: #35564b;
+  padding: 15px;
+  text-align: center;
+  color: white;
+}
+/* 常見問題 */
+.faq-block {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  display: flex;
+  text-align: left;
+  border-bottom: #a6e2c0 solid 1px;
+  padding-bottom: 24px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.faq-item + .faq-item {
+  margin-top: 20px;
+}
+.faq-item__hide {
+  height: 15px;
+}
+.faq-item__number {
+  font-family: Questrial;
+  font-size: 24px;
+  color: #70b282;
+  margin-right: 16px;
+  line-height: 24px;
+}
+.faq-item__content h2 {
+  font-family: MicrosoftJhengHei;
+  font-weight: normal;
+  font-size: 18px;
+  margin: 0;
+  line-height: 24px;
+}
+.faq-item__content p {
+  font-family: MicrosoftJhengHei;
+  font-size: 16px;
+}
+
+/*  抽獎區域  */
+.section-lottery {
+  height: 600px;
+  background: url(./img/lottery/bg.jpg) center/cover no-repeat;
+  position: relative;
+  box-sizing: border-box;
+}
+.lottery-block {
+  border-radius: 16px;
+  background-color: white;
+  max-width: 500px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 20px 20px 20px;
+  box-sizing: border-box;
+}
+.lottery-title {
+  font-weight: bold;
+  text-align: center;
+  color: #5ec1b6;
+  font-size: 24px;
+}
+.lottery__detail {
+  display: flex;
+  padding: 20px 0px;
+  border-bottom: #cdcdcd 1px solid;
+}
+.lottery__detail-title {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100px;
+}
+.lottery__detail-cotent {
+  font-size: 16px;
+  flex: 1;
+}
+.lottery-btn {
+  border-radius: 16px;
+  padding: 20px 0;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #e62a45;
+  transition: all 0.3s;
+  margin: 20px auto;
+  text-align: center;
+  box-sizing: border-box;
+  max-width: 400px;
+}
+.lottery-btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+/*  抽獎結果  */
+.lottery__result {
+  color: #292222;
+  max-width: 800px;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lottery-result__title {
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+.lottery-result__content {
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+.lottery-result__btn {
+  border-radius: 16px;
+  padding: 20px 0;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #e62a45;
+  transition: all 0.3s;
+  margin: 20px auto;
+  box-sizing: border-box;
+  max-width: 300px;
+}
+.lottery-result__btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* 管理後台 */
+/*  登入  */
+.form-row {
+  justify-content: center;
+}
+/*  管理抽獎  */
+.container {
+  margin: 100px auto;
+}
+.text-danger {
+  font-size: 20px;
+}
+.lottery_info_tr {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+.row_add {
+  background: bisque;
+}
+table,
+.form-control {
+  text-align: center;
+}
+.table td {
+  vertical-align: middle;
+}
+/*  刪除符號  */
+.fa-trash-alt {
+  font-size: 30px;
+  padding: 10px;
+}
+.fa-trash-alt:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+
+/*  RWD 設計  */
+@media (max-width: 768px) {
+  /*  導覽列  */
+  .navbar .wrapper {
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .navbar__site-name {
+    margin: 20px;
+  }
+  .navbar__list {
+    display: flex;
+    width: 100%;
+  }
+  .navbar__list li {
+    flex: 1;
+    margin-left: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+  /*  抽獎區域  */
+  .section-lottery {
+    background: none;
+    height: auto;
+  }
+  .lottery-block {
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    transform: none;
+    max-width: none;
+  }
+  /*  抽獎結果  */
+  .lottery__result {
+    top: 0;
+    left: 0;
+    transform: none;
+    padding: 10px 5px;
+  }
+  /*  底部資訊  */
+  .footer__top .wrapper {
+    flex-direction: column-reverse;
+  }
+  .footer__info {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+}

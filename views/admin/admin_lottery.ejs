@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('../template/head') %>
+  <style>
+    .col {
+      background-color: aliceblue;
+      border: 1px solid blanchedalmond
+    }
+  </style>
+</head>
+ <body>
+  <!--導覽列-->
+  <%- include('../template/navbar') %>
+  <!-- 直接根據 res.locals 內的 errorMessage 取得錯誤訊息 -->
+  <% if (errorMessage.length > 0) { %> <!-- errorMessage 預設值為空陣列 --> 
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+  <!--管理選項 nav-->
+  <%- include('./admin_nav') %>
+  <main class="container">
+    <!-- 新增獎項按鈕 -->
+    <center><a class="btn btn-primary btn-lg mb-3" href="/addLottery" role="button">新增獎項</a></center>
+    <!-- 獎項加權提醒 -->
+    <div class="alert alert-warning" role="alert">
+      獎項加權數請輸入 1 ~ 100 的整數，該獎項中獎率 = 該獎項加權數 / 所有獎項加權數總和
+    </div>
+    <table class="table table-sm table-bordered">
+      <tr class="lottery_info_tr">
+        <th>獎項名稱</th>
+        <th>獎項說明</th>
+        <th>獎項圖片</th>
+        <th>獎項加權數</th>
+        <th>動作</th>
+      </tr>
+      <!-- 資料庫無資料時防錯 -->
+      <% if (typeof lotteries !== 'undefined') {%> 
+        <% for (let lottery of lotteries) { %>
+        <tr class="lottery_row">
+          <td>
+            <%= lottery.name %>
+          </td>
+          <td>
+            <%= lottery.content %>
+          </td>
+          <td>
+            <div class='admin_lottery_image'><img src="<%= lottery.imageURL %>"/></div>
+          </td>
+          <td>
+            <%= lottery.chance %>
+          </td>
+          <td>
+            <a class="btn btn-outline-secondary" href="/updateLottery/<%= lottery.id %>" role="button">編輯</a>
+            <a class="btn btn-outline-danger" href="/deleteLottery/<%= lottery.id %>" role="button">刪除</a>
+          </td>
+        </tr>
+        <% } %>
+      <% } %>
+    </table>
+  </main>
+  <!--底部資訊-->
+  <%- include('../template/footer') %>
+  <!-- Modal -->
+  <div class="modal fade" id="popupMsg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">警告</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">我知道了!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

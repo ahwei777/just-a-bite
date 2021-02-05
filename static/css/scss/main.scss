@@ -1,0 +1,10 @@
+@use 'normalize';
+
+@use 'template/layout';
+@use 'template/navbar';
+@use 'template/footer';
+@use 'page/index';
+@use 'page/faq';
+@use 'page/lottery';
+@use 'page/order';
+@use 'page/admin';

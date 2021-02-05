@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('../template/head') %>
+</head>
+ <body>
+  <!--導覽列-->
+  <%- include('../template/navbar') %>
+  <!-- 直接根據 res.locals 內的 errorMessage 取得錯誤訊息 -->
+  <% if (errorMessage.length > 0) { %> <!-- errorMessage 預設值為空陣列 --> 
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+  <!--抽獎區域-->
+  <div class='container'>
+    <form class="needs-validation" method="POST" action="/register" novalidate>
+      <div class="form-row">
+        <div class="col-md-5 mb-3">
+          <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-lg">帳號</span>
+            </div>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-5 mb-3">
+          <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-lg">密碼</span>
+            </div>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+        </div>
+      </div>
+      <center><button class="btn btn-primary" type="submit">送出</button></center>
+    </form>
+  </div>
+  <!--底部資訊-->
+  <%- include('../template/footer') %>
+
+<script src = '/index.js'></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+/* 管理後台 */
+/*  登入  */
+.form-row {
+  justify-content: center;
+}
+/*  後台選項  */
+.admin_nav {
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-around;
+}
+/*  管理抽獎  */
+.alert-warning, .alert-danger {
+  text-align: center;
+}
+.container {
+  margin: 100px auto;
+}
+.admin_lottery_image img {
+  height: 160px;
+  width: 160px;
+}
+.table {
+  text-align: center;
+  & th {
+    vertical-align: middle;
+  }
+}
+.table td {
+  vertical-align: middle;
+}
+/*  刪除符號  */
+.fa-trash-alt {
+  font-size: 30px;
+  padding: 10px;
+}
+.fa-trash-alt:hover {
+  cursor: pointer;
+  color: orange;
+}
+/*  調整上傳圖片 input 的樣式  */
+.custom-file-label {
+  cursor: pointer;
+  &:after {
+    content: none;
+  }
+}

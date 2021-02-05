@@ -1,0 +1,42 @@
+/* 常見問題 */
+.faq-block {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.btn-link {
+  color: black;
+  &:hover, &:focus {
+    text-decoration: none;
+    color: black;
+  }
+}
+.btn:focus {
+  box-shadow: none;
+}
+.card:hover {
+  background-color: lightyellow;
+}
+.card-header {
+  background: none;
+  border: none;
+}
+.card-body {
+  text-align: left;
+  padding: 10px 90px;
+}
+.faq-item {
+  &__number {
+    font-family: Questrial;
+    font-size: 24px;
+    color: #70b282;
+    margin-right: 16px;
+    line-height: 24px;
+  }
+  &__content {
+    font-family: MicrosoftJhengHei;
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0;
+    line-height: 24px;
+  }
+}

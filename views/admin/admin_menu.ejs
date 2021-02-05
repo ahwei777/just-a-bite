@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('../template/head') %>
+</head>
+ <body>
+  <!--導覽列-->
+  <%- include('../template/navbar') %>
+  <!-- 直接根據 res.locals 內的 errorMessage 取得錯誤訊息 -->
+  <% if (errorMessage.length > 0) { %> <!-- errorMessage 預設值為空陣列 --> 
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+  <!--管理選項 nav-->
+  <%- include('./admin_nav') %>
+  <section class="section">
+    <!-- 新增按鈕 -->
+    <a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/addMenu" role="button">新增菜單</a>
+
+    <div class='section__menu'>
+      <!-- 資料庫無資料時防錯 -->
+      <% if (typeof menus !== 'undefined') {%> 
+        <% for (let menu of menus) { %>
+          <div class='menu__card'>
+            <div class='menu__card__photo'><img src="<%= menu.url %>"/></div>
+            <h6 class='menu__card__title'><%= menu.name %> | $<%= menu.price %></h6>
+            <h6 class='menu__card__order'>順序：<%= menu.sequence %></h6>
+            <div>
+              <a class="btn btn-outline-secondary" href="/updateMenu/<%= menu.id %>" role="button">編輯</a>
+              <a class="btn btn-outline-danger" href="/deleteMenu/<%= menu.id %>" role="button">刪除</a>
+            </div>
+          </div>
+        <% } %>
+      <% } %>
+    </div>
+  </section>
+  <!--底部資訊-->
+  <%- include('../template/footer') %>
+  <!-- Modal -->
+  <div class="modal fade" id="popupMsg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">警告</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">我知道了!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

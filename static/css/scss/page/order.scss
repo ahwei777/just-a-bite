@@ -1,0 +1,115 @@
+/*  點餐  */
+.banner__order {
+  height: 120px;
+  background: url(../../../img/order/banner.png) center/cover no-repeat;
+}
+.section__hotsale {
+  display: flex; 
+
+  & div {
+    flex: 1;
+  }
+  & img {
+    display: flex;
+    width: 100%; 
+  }
+}
+.soldout {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "售完";
+    font-size: 16px;
+    color: white;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #2f2f2f;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    line-height: 60px;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    background: white;
+    opacity: 0.5;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.order__intro {
+  display: flex;
+  align-items: center;
+  &__banner img {
+    height: 350px;
+  }
+  &__text {
+    text-align: left;
+    margin-left: 20px;
+  }
+  &__text h1 {
+    white-space: pre-line;
+    font-weight: bold;
+    color: #357933;
+  }
+}
+
+.action__msg {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.fa-angle-double-down {
+  margin-top: 20px;
+  font-size: 36px;
+}
+
+.section__menu {
+  margin: auto;
+  max-width: 800px;
+  /*  設置 flex 可自動收合用於 RWD  */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.menu__card {
+  color: #3f633c;
+  margin: 15px;
+
+  &__photo img {
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+  }
+  &__title {
+    margin: 20px auto;
+  }
+
+  &__btn {
+    border: solid 1px #3f633c;
+    background-color: #f1fff2;
+    padding: 15px auto;
+  }
+}
+
+/*  RWD 設計  */
+@media (max-width: 768px) {
+  /*  抽獎區域  */
+  .order__intro {
+    flex-direction: column;
+  }
+  .order__intro__banner img {
+    height: auto;
+    width: 60%;
+  }
+}

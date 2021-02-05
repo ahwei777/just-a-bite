@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('../template/head') %>
+</head>
+ <body>
+  <!--導覽列-->
+  <%- include('../template/navbar') %>
+  <!-- 直接根據 res.locals 內的 errorMessage 取得錯誤訊息 -->
+  <% if (errorMessage.length > 0) { %> <!-- errorMessage 預設值為空陣列 --> 
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+  <!--管理選項 nav-->
+  <%- include('./admin_nav') %>
+  <main class="container">
+    <!-- 新增獎項按鈕 -->
+    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/addFaq" role="button">新增常見問題</a></center>
+    <table class="table table-sm table-bordered">
+      <tr class="lottery_info_tr">
+        <th>順序</th>
+        <th>問題標題</th>
+        <th>問題內容</th>
+        <th>動作</th>
+      </tr>
+      <!-- 資料庫無資料時防錯 -->
+      <% if (typeof faqs !== 'undefined') {%> 
+        <% for (let faq of faqs) { %>
+          <tr class="lottery_row">
+            <td>
+              <h1><%= faq.sequence %></h1>
+            </td>
+            <td>
+              <%= faq.name %>
+            </td>
+            <td>
+              <h6><%= faq.content %></h6>
+            </td>
+            <td>
+              <div>
+                <a class="btn btn-outline-secondary" href="/updateFaq/<%= faq.id %>" role="button">編輯</a>
+                <a class="btn btn-outline-danger" href="/deleteFaq/<%= faq.id %>" role="button">刪除</a>
+              </div>
+            </td>
+          </tr>
+        <% } %>
+      <% } %>
+    </table>
+  </main>
+  <!--底部資訊-->
+  <%- include('../template/footer') %>
+  <!-- Modal -->
+  <div class="modal fade" id="popupMsg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">警告</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">我知道了!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 引入 JS，負責 client 端互動，檢查輸入以及發送 request 到 API -->
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+</body>
+</html>
