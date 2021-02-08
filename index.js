@@ -1,3 +1,4 @@
+require('dotenv').config();
 // 占用的 port
 const port = process.env.PORT || 3005;
 // 引入所有相關套件

@@ -6,7 +6,7 @@
   帳號：admin
   密碼：admin
 ```
-![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-wholePage.png?raw=true)
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-wholePage.jpg?raw=true)
 
 ## 索引
 - [簡介](#簡介)
@@ -21,7 +21,7 @@
 
 ## 簡介
 
-此作品為 [Lidemy mentor-program-4th](https://github.com/Lidemy/mentor-program-4th) 的課程作業之一 ，利用 Express.js 建構 MVC 網站，以 Sequelize ORM 操作資料庫，並配合 bcrypt, session, multer 等 middleware 實作常見功能，畫面部分由 EJS 模板引擎動態產生。
+此作品為 [Lidemy mentor-program-4th](https://github.com/Lidemy/mentor-program-4th) 的課程作業之一，利用 Express.js 建構 MVC 網站，以 Sequelize ORM 操作資料庫，並配合 bcrypt, session, multer 等 middleware 實作常見功能，畫面部分由 EJS 模板引擎動態產生。具備基本前後台常見功能。
 
 ## 功能介紹
 
@@ -102,7 +102,51 @@ $ git clone https://github.com/ahwei777/just-a-bite.git
 $ npm install
 ```
 
-3. 在本機運行專案（預設 port:3005）
+3. 建立 config/config.json，輸入本機資料庫帳號密碼及資料庫名稱
+```
+{
+  "development": {
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
+```
+
+4. 建立環境變數檔案 .env，內容為：
+```
+SECRET='自行輸入任意長度字元'
+```
+
+5. 於本機建立與 config.json 內同名資料庫
+
+6. 於資料庫中建立 table
+```
+$ npm run migrate
+```
+
+7. 於資料庫中插入初始 demo 資料
+```
+$ npm run seed
+```
+
+8. 環境設置完畢，於本機運行專案（預設 port:3002）
 ```
 $ npm run start
 ```
