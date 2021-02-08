@@ -4,7 +4,7 @@ const db = require('../models'); // 引入完成 ORM 的 models
 const { Admin, Lottery, Menu, Faq } = db;
 
 // fetch
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 const FormData = require('form-data');
 
 function fetchToImgur(encode_image) {
@@ -14,22 +14,24 @@ function fetchToImgur(encode_image) {
   return fetch('https://api.imgur.com/3/image', {
     method: 'POST',
     headers: {
-      'Authorization': 'Client-ID ef0e0fd605be920',
+      Authorization: 'Client-ID ef0e0fd605be920',
     },
     body: formData,
-  }).then((response) => {
-    //  判斷 status
-    const { status } = response;
-    //  status 正常，將 response 轉為 json 格式後回傳
-    if (status >= 200 && status < 400) {
-      return response.json();
-    }
-    //  status 有誤，丟出錯誤後終止程式碼
-    throw new Error(status);
-  //  server 無正確回應，例如錯誤網址直接找不到 server 或連線異常等
-  }).catch((error) => {
-    console.log(error);
-  });
+  })
+    .then((response) => {
+      //  判斷 status
+      const { status } = response;
+      //  status 正常，將 response 轉為 json 格式後回傳
+      if (status >= 200 && status < 400) {
+        return response.json();
+      }
+      //  status 有誤，丟出錯誤後終止程式碼
+      throw new Error(status);
+      //  server 無正確回應，例如錯誤網址直接找不到 server 或連線異常等
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 // controller 負責串接 model 及 render
@@ -63,6 +65,7 @@ const adminController = {
         }
         //  驗證成功
         req.session.username = admin.username;
+        req.flash('successMessage', '登入成功！');
         return res.redirect('/admin');
       });
       return true;
@@ -75,7 +78,8 @@ const adminController = {
   },
   handleLogout: (req, res) => {
     req.session.username = null;
-    return res.redirect('/index');
+    req.flash('successMessage', '登出成功！');
+    return res.redirect('/');
   },
   register: (req, res) => res.render('admin/register'),
   handleRegister: (req, res, next) => {
@@ -99,6 +103,7 @@ const adminController = {
         });
         //  確認寫入完成後設置 session 並導至後台首頁
         req.session.username = username;
+        req.flash('successMessage', '註冊成功！');
         return res.redirect('/admin');
       } catch (error) {
         const { errno } = error.original;
@@ -109,6 +114,9 @@ const adminController = {
           // 捕捉其他預期外的錯誤並印出
           req.flash('errorMessage', error.toString());
           console.log(error.toString());
+          return res.render('admin/admin_index', {
+            errorMessage,
+          });
         }
         return next();
       }
@@ -135,7 +143,7 @@ const adminController = {
       // 捕捉其他預期外的錯誤並印出
       const errorMessage = error.toString();
       console.log(error.toString());
-      return res.render('admin/admin', {
+      return res.render('admin/admin_index', {
         errorMessage,
       });
     }
@@ -143,10 +151,13 @@ const adminController = {
   deleteLottery: (req, res, next) => {
     Lottery.destroy({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     })
-      .then(() => res.redirect('/admin_lottery')) //  成功則導回首頁
+      .then(() => {
+        req.flash('successMessage', '刪除獎項成功！');
+        return res.redirect('/admin/admin_lottery');
+      }) //  成功則導回首頁
       .catch((err) => {
         req.flash('errorMessage', err.toString());
         console.log(error.toString());
@@ -156,41 +167,49 @@ const adminController = {
   },
   addLottery: async (req, res, next) => {
     const { name, content, chance } = req.body;
-    const encode_image = req.file.buffer.toString('base64');
     //  空值檢查
-    if (!name || !content || !chance || !encode_image) {
+    if (!name || !content || !chance) {
       req.flash('errorMessage', '缺少必要欄位');
       return next();
     }
     // 機率檢查
-    let reg = new RegExp("^([1-9]|[1-9]\\d|100)$");
+    let reg = new RegExp('^([1-9]|[1-9]\\d|100)$');
     if (!reg.test(chance)) {
       req.flash('errorMessage', '獎項加權數不符規定');
       return next();
     }
+    // 上傳檢查
+    if (!req.file) {
+      req.flash('errorMessage', '未上傳圖片或格式不符');
+      return next();
+    }
+    const encode_image = req.file.buffer.toString('base64');
     const result = await fetchToImgur(encode_image);
     Lottery.create({
       name,
       content,
       chance,
-      imageURL: result.data.link
-    }).then(() => {
-      return res.redirect('/admin_lottery');
-    }).catch((error) => {
-      // 捕捉其他預期外的錯誤並印出
-      req.flash('errorMessage', error.toString());
-      console.log(error.toString());
-      return next();
+      imageURL: result.data.link,
     })
+      .then(() => {
+        req.flash('successMessage', '新增獎項成功！');
+        return res.redirect('/admin/admin_lottery');
+      })
+      .catch((error) => {
+        // 捕捉其他預期外的錯誤並印出
+        req.flash('errorMessage', error.toString());
+        console.log(error.toString());
+        return next();
+      });
   },
   updateLottery: async (req, res, next) => {
     const { id } = req.params;
     try {
       const lottery = await Lottery.findOne({
         where: {
-          id
+          id,
         },
-      })
+      });
       // 有資料時回傳資料
       return res.render('admin/admin_updateLottery', {
         lottery,
@@ -204,9 +223,8 @@ const adminController = {
   },
   handleUpdateLottery: async (req, res, next) => {
     const { name, content, chance } = req.body;
-    const encode_image = req.file.buffer.toString('base64');
     //  空值檢查
-    if (!name || !content || !chance || !encode_image) {
+    if (!name || !content || !chance) {
       req.flash('errorMessage', '缺少必要欄位');
       return next();
     }
@@ -215,6 +233,12 @@ const adminController = {
       req.flash('errorMessage', '機率權重超過100，請重新修正');
       return next();
     }
+    // 上傳檢查
+    if (!req.file) {
+      req.flash('errorMessage', '未上傳圖片或格式不符');
+      return next();
+    }
+    const encode_image = req.file.buffer.toString('base64');
     try {
       const result = await fetchToImgur(encode_image);
       await Lottery.update(
@@ -222,14 +246,16 @@ const adminController = {
           name,
           content,
           chance,
-          imageURL: result.data.link
+          imageURL: result.data.link,
         },
         {
           where: {
             id: req.params.id,
           },
-      },)
-      return res.redirect('/admin_lottery');
+        }
+      );
+      req.flash('successMessage', '編輯獎項成功！');
+      return res.redirect('/admin/admin_lottery');
     } catch (error) {
       // 捕捉其他預期外的錯誤並印出
       req.flash('errorMessage', error.toString());
@@ -268,10 +294,13 @@ const adminController = {
   deleteMenu: (req, res, next) => {
     Menu.destroy({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     })
-      .then(() => res.redirect('/admin_menu')) //  成功則導回首頁
+      .then(() => {
+        req.flash('successMessage', '刪除菜單成功！');
+        return res.redirect('/admin/admin_menu');
+      }) //  成功則導回
       .catch((err) => {
         req.flash('errorMessage', err.toString());
         console.log(error.toString());
@@ -281,35 +310,43 @@ const adminController = {
   },
   addMenu: async (req, res, next) => {
     const { name, price, sequence } = req.body;
-    const encode_image = req.file.buffer.toString('base64');
     //  空值檢查
-    if (!name || !price || !sequence || !encode_image) {
+    if (!name || !price || !sequence) {
       req.flash('errorMessage', '缺少必要欄位');
       return next();
     }
+    // 上傳檢查
+    if (!req.file) {
+      req.flash('errorMessage', '未上傳圖片或格式不符');
+      return next();
+    }
+    const encode_image = req.file.buffer.toString('base64');
     const result = await fetchToImgur(encode_image);
     Menu.create({
       name,
       price,
       sequence,
-      url: result.data.link
-    }).then(() => {
-      return res.redirect('/admin_menu');
-    }).catch((error) => {
-      // 捕捉其他預期外的錯誤並印出
-      req.flash('errorMessage', error.toString());
-      console.log(error.toString());
-      return next();
+      url: result.data.link,
     })
+      .then(() => {
+        req.flash('successMessage', '新增菜單成功！');
+        return res.redirect('/admin/admin_menu');
+      })
+      .catch((error) => {
+        // 捕捉其他預期外的錯誤並印出
+        req.flash('errorMessage', error.toString());
+        console.log(error.toString());
+        return next();
+      });
   },
   updateMenu: async (req, res, next) => {
     const { id } = req.params;
     try {
       const menu = await Menu.findOne({
         where: {
-          id
+          id,
         },
-      })
+      });
       // 有資料時回傳資料
       return res.render('admin/admin_updateMenu', {
         menu,
@@ -323,12 +360,17 @@ const adminController = {
   },
   handleUpdateMenu: async (req, res, next) => {
     const { name, price, sequence } = req.body;
-    const encode_image = req.file.buffer.toString('base64');
     //  空值檢查
-    if (!name || !price || !sequence || !encode_image) {
+    if (!name || !price || !sequence) {
       req.flash('errorMessage', '缺少必要欄位');
       return next();
     }
+    // 上傳檢查
+    if (!req.file) {
+      req.flash('errorMessage', '未上傳圖片或格式不符');
+      return next();
+    }
+    const encode_image = req.file.buffer.toString('base64');
     try {
       const result = await fetchToImgur(encode_image);
       await Menu.update(
@@ -336,14 +378,16 @@ const adminController = {
           name,
           price,
           sequence,
-          url: result.data.link
+          url: result.data.link,
         },
         {
           where: {
             id: req.params.id,
           },
-      },)
-      return res.redirect('/admin_menu');
+        }
+      );
+      req.flash('successMessage', '編輯菜單成功！');
+      return res.redirect('/admin/admin_menu');
     } catch (error) {
       // 捕捉其他預期外的錯誤並印出
       req.flash('errorMessage', error.toString());
@@ -389,22 +433,28 @@ const adminController = {
       name,
       content,
       sequence,
-    }).then(() => {
-      return res.redirect('/admin_faq');
-    }).catch((error) => {
-      // 捕捉其他預期外的錯誤並印出
-      req.flash('errorMessage', error.toString());
-      console.log(error.toString());
-      return next();
     })
+      .then(() => {
+        req.flash('successMessage', '新增常見問題成功！');
+        return res.redirect('/admin/admin_faq');
+      })
+      .catch((error) => {
+        // 捕捉其他預期外的錯誤並印出
+        req.flash('errorMessage', error.toString());
+        console.log(error.toString());
+        return next();
+      });
   },
   deleteFaq: (req, res, next) => {
     Faq.destroy({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     })
-      .then(() => res.redirect('/admin_faq'))
+      .then(() => {
+        req.flash('successMessage', '刪除常見問題成功！');
+        return res.redirect('/admin/admin_faq');
+      })
       .catch((err) => {
         req.flash('errorMessage', err.toString());
         console.log(error.toString());
@@ -417,9 +467,9 @@ const adminController = {
     try {
       const faq = await Faq.findOne({
         where: {
-          id
+          id,
         },
-      })
+      });
       // 有資料時回傳資料
       return res.render('admin/admin_updateFaq', {
         faq,
@@ -448,11 +498,12 @@ const adminController = {
         where: {
           id: req.params.id,
         },
-      },
+      }
     )
       .then(() => {
+        req.flash('successMessage', '編輯常見問題成功！');
         //  成功則導回首頁
-        return res.redirect('/admin_faq');
+        return res.redirect('/admin/admin_faq');
       })
       .catch((err) => {
         // 捕捉其他預期外的錯誤並印出

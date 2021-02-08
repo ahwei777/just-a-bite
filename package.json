@@ -1,6 +1,6 @@
 {
-  "name": "week17-2",
-  "version": "1.0.0",
+  "name": "just-a-bite",
+  "version": "1.0",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -10,7 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:seed": "npx sequelize-cli db:seed:all",
     "db:migrate": "npx sequelize-cli db:migrate",
-    "start": "npm run db:migrate && npm run db:seed && node app.js"
+    "start": "npm run db:migrate && npm run db:seed && node index.js",
+    "db:reset": "npx sequelize-cli db:migrate:undo:all && npm run db:migrate && npm run db:seed"
+    
   },
   "author": "",
   "license": "ISC",

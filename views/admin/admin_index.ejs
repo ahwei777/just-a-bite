@@ -13,9 +13,13 @@
       <%= errorMessage %>
     </div>
   <% } %>
+  <!-- 直接根據 res.locals 內的 successMessage 取得成功訊息 -->
+  <% if (successMessage.length > 0) { %> <!-- successMessage 預設值為空陣列 --> 
+    <div class="alert alert-success" role="alert">
+      <%= successMessage %>
+    </div>
+  <% } %>
   <!--管理選項 nav-->
   <%- include('./admin_nav') %>
-  <!--底部資訊-->
-  <%- include('../template/footer') %>
 </body>
 </html>

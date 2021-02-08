@@ -15,11 +15,11 @@
   <% } %>
   <!--管理選項 nav-->
   <%- include('./admin_nav') %>
-  <section class="section">
+  <section class="container">
     <!-- 新增按鈕 -->
-    <form class="needs-validation" method="POST" action="/updateMenu/<%= menu.id %>" enctype ="multipart/form-data" novalidate>
+    <form class="needs-validation" method="POST" action="/admin/updateMenu/<%= menu.id %>" enctype ="multipart/form-data" novalidate>
       <div class="form-row">
-        <div class="col-md-5 mb-3">
+        <div class="col-md-8 mb-3">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-lg">獎項名稱：</span>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-5 mb-3">
+        <div class="col-md-8 mb-3">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-lg">價格：</span>
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-5 mb-3">
+        <div class="col-md-8 mb-3">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-lg">順序：</span>
@@ -49,14 +49,14 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-5 mb-3">
+        <div class="col-md-8 mb-3">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroupFileAddon01">上傳圖片</span>
             </div>
             <div class="custom-file">
               <input type="file" class="custom-file-input form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
-              <label class="custom-file-label" for="inputGroupFile01">選擇圖片(限 .png 格式)</label>
+              <label class="custom-file-label" for="inputGroupFile01">限 jpg／jpeg／png／大小 1MB 以內</label>
             </div>
           </div>
         </div>
@@ -65,8 +65,6 @@
     </form>
 
   </section>
-  <!--底部資訊-->
-  <%- include('../template/footer') %>
   <!-- 引入 JS，負責 client 端互動，檢查輸入以及發送 request 到 API -->
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

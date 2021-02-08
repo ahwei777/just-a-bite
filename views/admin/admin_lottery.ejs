@@ -19,11 +19,17 @@
       <%= errorMessage %>
     </div>
   <% } %>
+  <!-- 直接根據 res.locals 內的 successMessage 取得成功訊息 -->
+  <% if (successMessage.length > 0) { %> <!-- successMessage 預設值為空陣列 --> 
+    <div class="alert alert-success" role="alert">
+      <%= successMessage %>
+    </div>
+  <% } %>
   <!--管理選項 nav-->
   <%- include('./admin_nav') %>
   <main class="container">
     <!-- 新增獎項按鈕 -->
-    <center><a class="btn btn-primary btn-lg mb-3" href="/addLottery" role="button">新增獎項</a></center>
+    <center><a class="btn btn-primary btn-lg mb-3" href="/admin/addLottery" role="button">新增獎項</a></center>
     <!-- 獎項加權提醒 -->
     <div class="alert alert-warning" role="alert">
       獎項加權數請輸入 1 ~ 100 的整數，該獎項中獎率 = 該獎項加權數 / 所有獎項加權數總和
@@ -53,16 +59,14 @@
             <%= lottery.chance %>
           </td>
           <td>
-            <a class="btn btn-outline-secondary" href="/updateLottery/<%= lottery.id %>" role="button">編輯</a>
-            <a class="btn btn-outline-danger" href="/deleteLottery/<%= lottery.id %>" role="button">刪除</a>
+            <a class="btn btn-outline-secondary" href="/admin/updateLottery/<%= lottery.id %>" role="button">編輯</a>
+            <a class="btn btn-outline-danger" href="/admin/deleteLottery/<%= lottery.id %>" role="button">刪除</a>
           </td>
         </tr>
         <% } %>
       <% } %>
     </table>
   </main>
-  <!--底部資訊-->
-  <%- include('../template/footer') %>
   <!-- Modal -->
   <div class="modal fade" id="popupMsg" data-backdrop="static" data-keyboard="false" tabindex="-1">
     <div class="modal-dialog">

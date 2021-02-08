@@ -6,8 +6,8 @@ module.exports = {
       'Admins',
       [
         {
-          username: 'seedTest',
-          password: 'seedTest',
+          username: 'admin',
+          password: 'admin',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

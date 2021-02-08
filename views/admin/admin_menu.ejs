@@ -13,11 +13,17 @@
       <%= errorMessage %>
     </div>
   <% } %>
+  <!-- 直接根據 res.locals 內的 successMessage 取得成功訊息 -->
+  <% if (successMessage.length > 0) { %> <!-- successMessage 預設值為空陣列 --> 
+    <div class="alert alert-success" role="alert">
+      <%= successMessage %>
+    </div>
+  <% } %>
   <!--管理選項 nav-->
   <%- include('./admin_nav') %>
-  <section class="section">
+  <section class="container">
     <!-- 新增按鈕 -->
-    <a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/addMenu" role="button">新增菜單</a>
+    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/admin/addMenu" role="button">新增菜單</a></center>
 
     <div class='section__menu'>
       <!-- 資料庫無資料時防錯 -->
@@ -28,16 +34,14 @@
             <h6 class='menu__card__title'><%= menu.name %> | $<%= menu.price %></h6>
             <h6 class='menu__card__order'>順序：<%= menu.sequence %></h6>
             <div>
-              <a class="btn btn-outline-secondary" href="/updateMenu/<%= menu.id %>" role="button">編輯</a>
-              <a class="btn btn-outline-danger" href="/deleteMenu/<%= menu.id %>" role="button">刪除</a>
+              <a class="btn btn-outline-secondary" href="/admin/updateMenu/<%= menu.id %>" role="button">編輯</a>
+              <a class="btn btn-outline-danger" href="/admin/deleteMenu/<%= menu.id %>" role="button">刪除</a>
             </div>
           </div>
         <% } %>
       <% } %>
     </div>
   </section>
-  <!--底部資訊-->
-  <%- include('../template/footer') %>
   <!-- Modal -->
   <div class="modal fade" id="popupMsg" data-backdrop="static" data-keyboard="false" tabindex="-1">
     <div class="modal-dialog">

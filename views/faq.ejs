@@ -20,24 +20,33 @@
       <div class="faq-block">
         <!-- 防空值報錯 -->
         <% if (typeof faqs !== 'undefined') {%> 
+        <div id="accordion">
           <% for (let faq of faqs) { %>
-          <div class="accordion" id="accordionExample">
             <div class="card">
-              <div class="card-header" id="heading<%= faq.sequence %>">
+              <div class="card-header" id="heading<%= faq.id %>">
                 <h2 class="mb-0">
-                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= faq.sequence %>" aria-controls="collapseOne">
-                    <span class="faq-item__number">Q<%= faq.sequence %>: </span><span class="faq-item__content"><%= faq.name %></span>
+                  <button 
+                    class="btn btn-link btn-block text-left"
+                    data-toggle="collapse"
+                    data-target="#collapse<%= faq.id %>"
+                    aria-controls="collapse<%= faq.id %>">
+                      <span class="faq-item__number">Q<%= faq.sequence %>: </span>
+                      <span class="faq-item__content"><%= faq.name %></span>
                   </button>
                 </h2>
               </div>
-              <div id="collapse<%= faq.sequence %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                  <%= faq.content %>
-                </div>
+              <div 
+                id="collapse<%= faq.id %>"
+                class="collapse"
+                aria-labelledby="heading<%= faq.id %>"
+                data-parent="#accordion">
+                  <div class="card-body">
+                    <%= faq.content %>
+                  </div>
               </div>
             </div>
-          </div>
           <% } %> 
+        </div>
         <% } %> 
         </div>
       

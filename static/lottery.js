@@ -1,5 +1,5 @@
 //  將固定網址及文字設為變數
-const API_URL = '/lotteries';
+const API_URL = '/lotteries-api';
 const errorMessage = '系統不穩定，請再試一次';
 //  設立一用來 call API 的函數，呼叫後會回傳 err(失敗)或經處理後的物件 json(成功)，後續再設定 callback function 處理回傳值
 function getPrize(cb) {
@@ -46,7 +46,7 @@ document.querySelector('.lottery__btn').addEventListener('click', () => {
       alert(err);
       return;
     }
-    console.log(json);
+    //console.log(json);
     //  解構語法
     const { name, content, imageURL } = json;
     //  依據 name 更換獎項名稱
@@ -56,7 +56,7 @@ document.querySelector('.lottery__btn').addEventListener('click', () => {
     //  依據 imageURL 更換背景
     document.querySelector(
       '.section__lottery',
-    ).style.backgroundImage = `url('${imageURL}')`;
+    ).style.background = `url('${imageURL}') center/cover no-repeat`;
     //  抽獎後隱藏抽獎說明資訊
     document.querySelector('.lottery__block').classList.add('hide');
     //  抽獎後顯示獲得獎項資訊

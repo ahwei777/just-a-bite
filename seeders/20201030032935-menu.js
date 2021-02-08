@@ -37,6 +37,22 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: '活力酪梨鮮蔬佐麵包',
+          price: '200',
+          url: 'https://i.imgur.com/Rkn8rP7.jpg',
+          sequence: '5',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: '鮮採芝麻葉佐油醋',
+          price: '200',
+          url: 'https://i.imgur.com/l3VFmtt.jpg',
+          sequence: '6',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

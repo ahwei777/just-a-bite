@@ -82,7 +82,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -650,6 +651,10 @@ template {
   background-color: lightyellow;
 }
 
+.card__active {
+  background-color: lightyellow;
+}
+
 .card-header {
   background: none;
   border: none;
@@ -876,6 +881,7 @@ template {
 }
 
 .menu__card {
+  text-align: center;
   color: #3f633c;
   margin: 15px;
 }
@@ -911,32 +917,75 @@ template {
   justify-content: center;
 }
 
+/*  input 置中  */
+input[type=text],
+input[type=password] {
+  text-align: center;
+}
+
+.custom-file-label {
+  text-align: center;
+  height: auto;
+}
+
 /*  後台選項  */
 .admin_nav {
   margin: 40px auto;
   display: flex;
   justify-content: space-around;
 }
+.admin_nav_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /*  管理抽獎  */
-.alert-warning, .alert-danger {
+.alert-success,
+.alert-warning,
+.alert-danger {
   text-align: center;
 }
 
 .container {
-  margin: 100px auto;
+  margin: 50px auto;
+}
+
+.login-form {
+  margin-top: 100px;
 }
 
 .admin_lottery_image img {
-  height: 160px;
-  width: 160px;
+  height: auto;
+  width: 300px;
 }
 
 .table {
   text-align: center;
+  /*  管理問題  */
+}
+.table tr {
+  line-height: 2.5rem;
 }
 .table th {
   vertical-align: middle;
+}
+.table__faq__sequence {
+  width: 50px;
+}
+.table__faq__name {
+  width: 250px;
+}
+.table__faq__content {
+  text-align: left;
+  line-height: 2rem;
+}
+.table__faq__action {
+  width: 120px;
+}
+
+textarea[name=content] {
+  resize: none;
 }
 
 .table td {
@@ -960,6 +1009,4 @@ template {
 }
 .custom-file-label:after {
   content: none;
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

@@ -1,7 +1,13 @@
 document.querySelector('.faq-block').addEventListener('click', (e) => {
-  const element = e.target.closest('.faq-item');
+  // delete all original css
+  const cardList = document.querySelectorAll('.card__active')
+  for (var item of cardList) {
+    item.classList.remove('card__active')
+  }
+  // add css to just clicked
+  const element = e.target.closest('.card');
   if (element) {
-    element.classList.toggle('faq-item__hide');
+    element.classList.toggle('card__active');
   }
 });
 /*  如不使用 closest 可自建函數

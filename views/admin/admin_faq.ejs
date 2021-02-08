@@ -13,13 +13,19 @@
       <%= errorMessage %>
     </div>
   <% } %>
+  <!-- 直接根據 res.locals 內的 successMessage 取得成功訊息 -->
+  <% if (successMessage.length > 0) { %> <!-- successMessage 預設值為空陣列 --> 
+    <div class="alert alert-success" role="alert">
+      <%= successMessage %>
+    </div>
+  <% } %>
   <!--管理選項 nav-->
   <%- include('./admin_nav') %>
   <main class="container">
     <!-- 新增獎項按鈕 -->
-    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/addFaq" role="button">新增常見問題</a></center>
+    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/admin/addFaq" role="button">新增常見問題</a></center>
     <table class="table table-sm table-bordered">
-      <tr class="lottery_info_tr">
+      <tr class="">
         <th>順序</th>
         <th>問題標題</th>
         <th>問題內容</th>
@@ -28,20 +34,20 @@
       <!-- 資料庫無資料時防錯 -->
       <% if (typeof faqs !== 'undefined') {%> 
         <% for (let faq of faqs) { %>
-          <tr class="lottery_row">
-            <td>
-              <h1><%= faq.sequence %></h1>
+          <tr>
+            <td class="table__faq__sequence">
+              <h5><%= faq.sequence %></h5>
             </td>
-            <td>
+            <td class="table__faq__name">
               <%= faq.name %>
             </td>
             <td>
-              <h6><%= faq.content %></h6>
+              <div class="table__faq__content"><%= faq.content %></div>
             </td>
-            <td>
+            <td class="table__faq__action">
               <div>
-                <a class="btn btn-outline-secondary" href="/updateFaq/<%= faq.id %>" role="button">編輯</a>
-                <a class="btn btn-outline-danger" href="/deleteFaq/<%= faq.id %>" role="button">刪除</a>
+                <a class="btn btn-sm btn-outline-secondary" href="/admin/updateFaq/<%= faq.id %>" role="button">編輯</a>
+                <a class="btn btn-sm btn-outline-danger" href="/admin/deleteFaq/<%= faq.id %>" role="button">刪除</a>
               </div>
             </td>
           </tr>
@@ -49,8 +55,6 @@
       <% } %>
     </table>
   </main>
-  <!--底部資訊-->
-  <%- include('../template/footer') %>
   <!-- Modal -->
   <div class="modal fade" id="popupMsg" data-backdrop="static" data-keyboard="false" tabindex="-1">
     <div class="modal-dialog">

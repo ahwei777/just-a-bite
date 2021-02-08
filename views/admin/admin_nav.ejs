@@ -1,6 +1,33 @@
 <!--管理選項 nav-->
 <div class="admin_nav">
-  <a class="btn btn-outline-info btn-lg <%= getActiveFromURL(url, '/admin_lottery') %>" href="/admin_lottery" role="button">抽獎品項管理</a>
-  <a class="btn btn-outline-info btn-lg <%= getActiveFromURL(url, '/admin_menu') %>" href="/admin_menu" role="button">MENU 管理</a>
-  <a class="btn btn-outline-info btn-lg <%= getActiveFromURL(url, '/admin_faq') %>" href="/admin_faq" role="button">常見問題管理</a>
+  <div class="admin_nav_item">
+    <i class="fas fa-gift fa-3x" style="color: #17a2b8"></i>
+    <br />
+    <a
+      class="btn btn-outline-info <%= getActiveFromURL(url, '/admin_lottery') %>"
+      href="/admin/admin_lottery"
+      role="button"
+      >抽獎品項管理</a
+    >
+  </div>
+  <div class="admin_nav_item">
+    <i class="fas fa-utensils fa-3x" style="color: #17a2b8"></i>
+    <br />
+    <a
+      class="btn btn-outline-info <%= getActiveFromURL(url, '/admin_menu') %>"
+      href="/admin/admin_menu"
+      role="button"
+      >MENU 管理</a
+    >
+  </div>
+  <div class="admin_nav_item">
+    <i class="fas fa-question-circle fa-3x" style="color: #17a2b8"></i>
+    <br />
+    <a
+      class="btn btn-outline-info <%= getActiveFromURL(url, '/admin_faq') %>"
+      href="/admin/admin_faq"
+      role="button"
+      >常見問題管理</a
+    >
+  </div>
 </div>
