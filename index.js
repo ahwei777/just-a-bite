@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(
   session({
     // session 參數
-    secret: process.env.secret,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
   })
