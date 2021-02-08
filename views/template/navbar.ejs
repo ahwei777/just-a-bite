@@ -3,7 +3,7 @@
     <div class='navbar__site-name' style="cursor:pointer;" onclick="location.href='/';">Just A Bite!</div>
     <div>
       <ul class='navbar__list'>
-        <li class='<%= getActiveFromURL(url, "/lottery") %>'><a href="/lottery">抽個大獎</a></li>
+        <li class='<%= getActiveFromURL(url, "play-lottery") %>'><a href="/play-lottery">抽個大獎</a></li>
         <li class='<%= getActiveFromURL(url, "/order") %>'><a href="/order">我要點餐</a></li>
         <li class='<%= getActiveFromURL(url, "/faq-list") %>'><a href="/faq-list">常見問題</a></li>
         <% if(username) { %>
