@@ -29,7 +29,7 @@
   <%- include('./admin_nav') %>
   <main class="container">
     <!-- 新增獎項按鈕 -->
-    <center><a class="btn btn-primary btn-lg mb-3" href="/admin/addLottery" role="button">新增獎項</a></center>
+    <center><a class="btn btn-primary btn-lg mb-3" href="/admin/lottery/add" role="button">新增獎項</a></center>
     <!-- 獎項加權提醒 -->
     <div class="alert alert-warning" role="alert">
       獎項加權數請輸入 1 ~ 100 的整數，該獎項中獎率 = 該獎項加權數 / 所有獎項加權數總和
@@ -59,8 +59,8 @@
             <%= lottery.chance %>
           </td>
           <td>
-            <a class="btn btn-outline-secondary" href="/admin/updateLottery/<%= lottery.id %>" role="button">編輯</a>
-            <a class="btn btn-outline-danger" href="/admin/deleteLottery/<%= lottery.id %>" role="button">刪除</a>
+            <a class="btn btn-outline-secondary" href="/admin/lottery/update/<%= lottery.id %>" role="button">編輯</a>
+            <a class="btn btn-outline-danger" href="/admin/lottery/delete/<%= lottery.id %>" role="button">刪除</a>
           </td>
         </tr>
         <% } %>

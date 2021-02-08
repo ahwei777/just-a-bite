@@ -5,7 +5,7 @@
       <ul class='navbar__list'>
         <li class='<%= getActiveFromURL(url, "/lottery") %>'><a href="/lottery">抽個大獎</a></li>
         <li class='<%= getActiveFromURL(url, "/order") %>'><a href="/order">我要點餐</a></li>
-        <li class='<%= getActiveFromURL(url, "/faq") %>'><a href="/faq">常見問題</a></li>
+        <li class='<%= getActiveFromURL(url, "/faq-list") %>'><a href="/faq-list">常見問題</a></li>
         <% if(username) { %>
           <li class='<%= getActiveFromURL(url, "/admin") %>'><a href="/admin">後台管理</a></li>
           <li><a href ="/admin/logout">後台登出</a></li>

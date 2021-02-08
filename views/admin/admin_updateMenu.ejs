@@ -17,7 +17,7 @@
   <%- include('./admin_nav') %>
   <section class="container">
     <!-- 新增按鈕 -->
-    <form class="needs-validation" method="POST" action="/admin/updateMenu/<%= menu.id %>" enctype ="multipart/form-data" novalidate>
+    <form class="needs-validation" method="POST" action="/admin/menu/update/<%= menu.id %>" enctype ="multipart/form-data" novalidate>
       <div class="form-row">
         <div class="col-md-8 mb-3">
           <div class="input-group">
@@ -55,7 +55,7 @@
               <span class="input-group-text" id="inputGroupFileAddon01">上傳圖片</span>
             </div>
             <div class="custom-file">
-              <input type="file" class="custom-file-input form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
+              <input type="file" name="file" class="custom-file-input form-control" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
               <label class="custom-file-label" for="inputGroupFile01">限 jpg／jpeg／png／大小 1MB 以內</label>
             </div>
           </div>

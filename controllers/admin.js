@@ -156,7 +156,7 @@ const adminController = {
     })
       .then(() => {
         req.flash('successMessage', '刪除獎項成功！');
-        return res.redirect('/admin/admin_lottery');
+        return res.redirect('/admin/lottery');
       }) //  成功則導回首頁
       .catch((err) => {
         req.flash('errorMessage', err.toString());
@@ -193,7 +193,7 @@ const adminController = {
     })
       .then(() => {
         req.flash('successMessage', '新增獎項成功！');
-        return res.redirect('/admin/admin_lottery');
+        return res.redirect('/admin/lottery');
       })
       .catch((error) => {
         // 捕捉其他預期外的錯誤並印出
@@ -255,7 +255,7 @@ const adminController = {
         }
       );
       req.flash('successMessage', '編輯獎項成功！');
-      return res.redirect('/admin/admin_lottery');
+      return res.redirect('/admin/lottery');
     } catch (error) {
       // 捕捉其他預期外的錯誤並印出
       req.flash('errorMessage', error.toString());
@@ -299,7 +299,7 @@ const adminController = {
     })
       .then(() => {
         req.flash('successMessage', '刪除菜單成功！');
-        return res.redirect('/admin/admin_menu');
+        return res.redirect('/admin/menu');
       }) //  成功則導回
       .catch((err) => {
         req.flash('errorMessage', err.toString());
@@ -330,7 +330,7 @@ const adminController = {
     })
       .then(() => {
         req.flash('successMessage', '新增菜單成功！');
-        return res.redirect('/admin/admin_menu');
+        return res.redirect('/admin/menu');
       })
       .catch((error) => {
         // 捕捉其他預期外的錯誤並印出
@@ -387,7 +387,7 @@ const adminController = {
         }
       );
       req.flash('successMessage', '編輯菜單成功！');
-      return res.redirect('/admin/admin_menu');
+      return res.redirect('/admin/menu');
     } catch (error) {
       // 捕捉其他預期外的錯誤並印出
       req.flash('errorMessage', error.toString());
@@ -436,7 +436,7 @@ const adminController = {
     })
       .then(() => {
         req.flash('successMessage', '新增常見問題成功！');
-        return res.redirect('/admin/admin_faq');
+        return res.redirect('/admin/faq');
       })
       .catch((error) => {
         // 捕捉其他預期外的錯誤並印出
@@ -453,7 +453,7 @@ const adminController = {
     })
       .then(() => {
         req.flash('successMessage', '刪除常見問題成功！');
-        return res.redirect('/admin/admin_faq');
+        return res.redirect('/admin/faq');
       })
       .catch((err) => {
         req.flash('errorMessage', err.toString());
@@ -503,7 +503,7 @@ const adminController = {
       .then(() => {
         req.flash('successMessage', '編輯常見問題成功！');
         //  成功則導回首頁
-        return res.redirect('/admin/admin_faq');
+        return res.redirect('/admin/faq');
       })
       .catch((err) => {
         // 捕捉其他預期外的錯誤並印出

@@ -23,7 +23,7 @@
   <%- include('./admin_nav') %>
   <main class="container">
     <!-- 新增獎項按鈕 -->
-    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/admin/addFaq" role="button">新增常見問題</a></center>
+    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/admin/faq/add" role="button">新增常見問題</a></center>
     <table class="table table-sm table-bordered">
       <tr class="">
         <th>順序</th>
@@ -46,8 +46,8 @@
             </td>
             <td class="table__faq__action">
               <div>
-                <a class="btn btn-sm btn-outline-secondary" href="/admin/updateFaq/<%= faq.id %>" role="button">編輯</a>
-                <a class="btn btn-sm btn-outline-danger" href="/admin/deleteFaq/<%= faq.id %>" role="button">刪除</a>
+                <a class="btn btn-sm btn-outline-secondary" href="/admin/faq/update/<%= faq.id %>" role="button">編輯</a>
+                <a class="btn btn-sm btn-outline-danger" href="/admin/faq/delete/<%= faq.id %>" role="button">刪除</a>
               </div>
             </td>
           </tr>

@@ -6,6 +6,7 @@ const multer = require('multer'); //  處理檔案上傳後放進 req 中供後�
 // multer 設定
 const upload = multer({
   fileFilter: (req, file, cb) => {
+    console.log('type', file.mimetype)
     if (file.mimetype == 'image/jpg' || file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
       return cb(null, true);
     } else {
@@ -31,15 +32,15 @@ adminPageRoutes.get('/', checkIsLogin, (req, res) => {
 });
 
 // 後台 - lottery
-adminPageRoutes.get('/admin_lottery', checkIsLogin, adminController.adminLottery);
-adminPageRoutes.get('/addLottery', checkIsLogin, (req, res) => {
+adminPageRoutes.get('/lottery', checkIsLogin, adminController.adminLottery);
+adminPageRoutes.get('/lottery/add', checkIsLogin, (req, res) => {
   res.render('admin/admin_addLottery');
 });
-adminPageRoutes.post('/addLottery', checkIsLogin, upload.single('file'), adminController.addLottery, redirectBack);
-adminPageRoutes.get('/deleteLottery/:id', checkIsLogin, adminController.deleteLottery, redirectBack);
-adminPageRoutes.get('/updateLottery/:id', checkIsLogin, adminController.updateLottery, redirectBack);
+adminPageRoutes.post('/lottery/add', checkIsLogin, upload.single('file'), adminController.addLottery, redirectBack);
+adminPageRoutes.get('/lottery/delete/:id', checkIsLogin, adminController.deleteLottery, redirectBack);
+adminPageRoutes.get('/lottery/update/:id', checkIsLogin, adminController.updateLottery, redirectBack);
 adminPageRoutes.post(
-  '/updateLottery/:id',
+  '/lottery/update/:id',
   checkIsLogin,
   upload.single('file'),
   adminController.handleUpdateLottery,
@@ -47,29 +48,29 @@ adminPageRoutes.post(
 );
 
 // 後台 - menu
-adminPageRoutes.get('/admin_menu', checkIsLogin, adminController.adminMenu, redirectBack);
-adminPageRoutes.get('/addMenu', checkIsLogin, (req, res) => {
+adminPageRoutes.get('/menu', checkIsLogin, adminController.adminMenu, redirectBack);
+adminPageRoutes.get('/menu/add', checkIsLogin, (req, res) => {
   res.render('admin/admin_addMenu');
 });
-adminPageRoutes.post('/addMenu', checkIsLogin, upload.single('file'), adminController.addMenu, redirectBack);
-adminPageRoutes.get('/deleteMenu/:id', checkIsLogin, adminController.deleteMenu, redirectBack);
-adminPageRoutes.get('/updateMenu/:id', checkIsLogin, adminController.updateMenu, redirectBack);
+adminPageRoutes.post('/menu/add', checkIsLogin, upload.single('file'), adminController.addMenu, redirectBack);
+adminPageRoutes.get('/menu/delete/:id', checkIsLogin, adminController.deleteMenu, redirectBack);
+adminPageRoutes.get('/menu/update/:id', checkIsLogin, adminController.updateMenu, redirectBack);
 adminPageRoutes.post(
-  '/updateMenu/:id',
+  '/menu/update/:id',
   checkIsLogin,
   upload.single('file'),
   adminController.handleUpdateMenu,
   redirectBack
 );
 
-// 後台 - 
-adminPageRoutes.get('/admin_faq', checkIsLogin, adminController.adminFaq, redirectBack);
-adminPageRoutes.get('/addFaq', checkIsLogin, (req, res) => {
+// 後台 - faq
+adminPageRoutes.get('/faq', checkIsLogin, adminController.adminFaq, redirectBack);
+adminPageRoutes.get('/faq/add', checkIsLogin, (req, res) => {
   res.render('admin/admin_addFaq');
 });
-adminPageRoutes.post('/addFaq', checkIsLogin, adminController.addFaq);
-adminPageRoutes.get('/deleteFaq/:id', checkIsLogin, adminController.deleteFaq);
-adminPageRoutes.get('/updateFaq/:id', checkIsLogin, adminController.updateFaq);
-adminPageRoutes.post('/updateFaq/:id', checkIsLogin, adminController.handleUpdateFaq);
+adminPageRoutes.post('/faq/add', checkIsLogin, adminController.addFaq);
+adminPageRoutes.get('/faq/delete/:id', checkIsLogin, adminController.deleteFaq);
+adminPageRoutes.get('/faq/update/:id', checkIsLogin, adminController.updateFaq);
+adminPageRoutes.post('/faq/update/:id', checkIsLogin, adminController.handleUpdateFaq);
 
 module.exports = adminPageRoutes;

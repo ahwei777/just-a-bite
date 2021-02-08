@@ -23,7 +23,7 @@
   <%- include('./admin_nav') %>
   <section class="container">
     <!-- 新增按鈕 -->
-    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/admin/addMenu" role="button">新增菜單</a></center>
+    <center><a class="btn btn-primary btn-lg btn_add_menu mb-3" href="/admin/menu/add" role="button">新增菜單</a></center>
 
     <div class='section__menu'>
       <!-- 資料庫無資料時防錯 -->
@@ -34,8 +34,8 @@
             <h6 class='menu__card__title'><%= menu.name %> | $<%= menu.price %></h6>
             <h6 class='menu__card__order'>順序：<%= menu.sequence %></h6>
             <div>
-              <a class="btn btn-outline-secondary" href="/admin/updateMenu/<%= menu.id %>" role="button">編輯</a>
-              <a class="btn btn-outline-danger" href="/admin/deleteMenu/<%= menu.id %>" role="button">刪除</a>
+              <a class="btn btn-outline-secondary" href="/admin/menu/update/<%= menu.id %>" role="button">編輯</a>
+              <a class="btn btn-outline-danger" href="/admin/menu/delete/<%= menu.id %>" role="button">刪除</a>
             </div>
           </div>
         <% } %>
