@@ -6,7 +6,7 @@
   帳號：admin
   密碼：admin
 ```
-![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-wholePage.jpg?raw=true)
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-banner.png?raw=true)
 
 ## 索引
 - [簡介](#簡介)
@@ -51,26 +51,29 @@
 
 ## DEMO
 
+### 瀏覽首頁
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-wholePage.jpg?raw=true)
+
 ### 瀏覽菜單
-![]()
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-order.png?raw=true)
 
-### 瀏覽常見問題
-![]()
+### 瀏覽常見問題（點擊展開／隱藏）
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-faq.gif?raw=true)
 
-### 參加線上抽獎
-![]()
+### 參加抽獎活動
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-lottery.gif?raw=true)
 
-### 註冊管理員
-![]()
+### 管理員註冊／登入
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-admin.gif?raw=true)
 
-### 新增／更新／刪除菜單（可上傳圖片）
-![]()
+### 新增／更新／刪除抽獎品項（上傳圖片）
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-lottery-update.gif?raw=true)
+
+### 新增／更新／刪除菜單（上傳圖片）
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-menu-update.gif?raw=true)
 
 ### 新增／更新／刪除常見問題
-![]()
-
-### 新增／更新／刪除抽獎品項（可上傳圖片）
-![]()
+![](https://github.com/ahwei777/for-GaGiO-README/blob/main/restaurant/restaurant-faq-update.gif?raw=true)
 
 ## 專案架構
 
@@ -146,7 +149,7 @@ $ npm run migrate
 $ npm run seed
 ```
 
-8. 環境設置完畢，於本機運行專案（預設 port:3002）
+8. 環境設置完畢，於本機運行專案（預設 port:3005）
 ```
 $ npm run start
 ```
